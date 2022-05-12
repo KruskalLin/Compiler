@@ -1,0 +1,67 @@
+digraph G {
+graph [rankdir = LR];
+node[shape=record];
+BB10[label="{ BB10|{<61>61:SG 0 |<63>63:SG 10 }}"]
+
+BB10-> BB11[label=""];
+BB10-> BB11[label="dominate",color="blue"];
+
+BB11[label="{ BB11|{<67>67:PHI  0 (83)|<68>68:CMP i_67 10|<69>69:BGE (68) [13]}}"]
+
+BB11-> BB12[label="then"];
+BB11-> BB13[label="else"];
+BB11-> BB12[label="dominate",color="blue"];
+BB11-> BB13[label="dominate",color="blue"];
+
+BB12[label="{ BB12|{<74>74:MUL i_67 4|<75>75:ADDA (74) a|<76>76:ADD i_67 10|<77>77:STORE (76) (75)|<79>79:ADDA (74) b|<80>80:MUL 5 i_67|<81>81:ADD (80) 1|<82>82:STORE (81) (79)|<83>83:ADD i_67 1|<85>85:SG (83) |<86>86:BRA [11] }}"]
+
+BB12-> BB11[label=""];
+
+BB13[label="{ BB13|{<91>91:CALL output 0|<92>92:CALL output 1|<93>93:WRITENL  |<94>94:CALL swap|<95>95:CALL output 0|<96>96:CALL output 1|<97>97:RET  }}"]
+
+BB13:91-> BB1[label="call",color="red"];
+BB13:92-> BB1[label="call",color="red"];
+BB13:94-> BB9[label="call",color="red"];
+BB13:95-> BB1[label="call",color="red"];
+BB13:96-> BB1[label="call",color="red"];
+
+BB1[label="{ BB1|{<2>2:CMP is_b 0|<3>3:BNE (2) [5]}}"]
+
+BB1-> BB2[label="then"];
+BB1-> BB5[label="else"];
+BB1-> BB2[label="dominate",color="blue"];
+BB1-> BB8[label="dominate",color="blue"];
+BB1-> BB5[label="dominate",color="blue"];
+
+BB2[label="{ BB2|{<8>8:PHI  0 (20)|<9>9:CMP i_8 size|<10>10:BGE (9) [4]}}"]
+
+BB2-> BB3[label="then"];
+BB2-> BB4[label="else"];
+BB2-> BB3[label="dominate",color="blue"];
+BB2-> BB4[label="dominate",color="blue"];
+
+BB3[label="{ BB3|{<16>16:MUL i_8 4|<17>17:ADDA (16) a|<18>18:LOAD (17) |<19>19:WRITE (18) |<20>20:ADD i_8 1|<22>22:BRA [2] }}"]
+
+BB3-> BB2[label=""];
+
+BB4[label="{ BB4|{<28>28:BRA [8] }}"]
+
+BB4-> BB8[label=""];
+
+BB8[label="{ BB8|{<52>52:WRITENL  |<53>53:RET  }}"]
+
+
+BB5[label="{ BB5|{<33>33:PHI  0 (38)|<34>34:MUL i_33 4|<35>35:ADDA (34) b|<36>36:LOAD (35) |<37>37:WRITE (36) |<38>38:ADD i_33 1}}"]
+
+BB5-> BB6[label=""];
+BB5-> BB6[label="dominate",color="blue"];
+
+BB6[label="{ BB6|{<45>45:CMP (38) size|<46>46:BNE (45) [5]}}"]
+
+BB6-> BB5[label="then"];
+BB6-> BB8[label="else"];
+
+BB9[label="{ BB9|{<56>56:SG b |<58>58:SG a |<59>59:RET  }}"]
+
+
+}
