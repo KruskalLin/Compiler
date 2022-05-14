@@ -11,7 +11,7 @@
 
 
 
-### Script for DOT Graph Generation
+### Compiling Script for DOT Graph Generation
 
 Since there are many assertions for type checking in this project, please add `-ea` argument in JVM for enabling assertions.
 
