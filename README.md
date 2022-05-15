@@ -1,6 +1,6 @@
 # README
 
-## Compiler 605 Project
+## DLX Compiler Project
 
 ### Update
 
